@@ -7,20 +7,15 @@
 </head>
 <body>
   <div>
-    <p>Jokhn ami all task ber kori</p>
     <ul>
-        {% for task in tasks %}
-            <li>{{task}}</li>
+        {% for project in task_count %}
+            <li>
+               <p>{{project.name}}</p>
+               <p>{{project.num_task}}</p>
+            </li>
         {% endfor %}
     </ul>
-  </div> 
-  <div>
-    <p>jokhn ami specific task ber kori:</p>
-    {{task3}}
-  </div> 
-  <div>
-    <p>Jokhn ami first task ber kori:</p>
-    {{first_task}}
+    
   </div>
 </body>
 </html>
