@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div>
+    <p>Jokhn ami all task ber kori</p>
+    <ul>
+        {% for task in tasks %}
+            <li>{{task}}</li>
+        {% endfor %}
+    </ul>
+  </div> 
+  <div>
+    <p>jokhn ami specific task ber kori:</p>
+    {{task3}}
+  </div> 
+  <div>
+    <p>Jokhn ami first task ber kori:</p>
+    {{first_task}}
+  </div>
+</body>
+</html>
