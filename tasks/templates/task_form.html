@@ -9,11 +9,19 @@
 </head>
 <body>
     <div class = "w-1/2 mx-auto mt-8">
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class = "px-2 py-2 {%if message.tags == 'success'%}bg-green-600{%endif%}">{{message}}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
        <form method = "POST">
-        <input type="text" class = "border border-gray-500 w-full rounded-lg shadow-sm">
+        {% comment %} <input type="text" class = "border border-gray-500 w-full rounded-lg shadow-sm"> {% endcomment %}
         {% csrf_token %}
-        {{form.as_p}}
-        <button type = "submit"  class = "border-2 border-box-blue mt-3 rounded-lg bg-green-600">Submit</button>
+        {{task_form.as_p}}
+        {{task_detail_form}}
+        <button type = "submit"  class = "mb-5 px-3 py-2 text-red-950 mt-2 rounded-md">Submit</button>
        </form> 
     </div>
 </body>
