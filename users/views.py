@@ -7,7 +7,7 @@ from django.contrib import messages
 from users.forms import LoginForm
 from django.contrib.auth.tokens import default_token_generator
 
-# Create your views here.
+
 
 
 def sign_up(request):
@@ -51,5 +51,6 @@ def activate_user(request, user_id, token):
             return redirect('sign-in')
         else:
             HttpResponse('Invalid id or token!')
+
     except User.DoesNotExist:
         return HttpResponse('User not found')
