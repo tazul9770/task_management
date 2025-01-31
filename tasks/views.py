@@ -54,7 +54,7 @@ def test(request):
     }
     return render(request, "test.html", context)
 
-@login_required()
+@login_required
 @permission_required('tasks.add_task', login_url='no-permission')
 def create_task(request):
     #employees = Employee.objects.all()
@@ -78,7 +78,7 @@ def create_task(request):
     return render(request, "task_form.html", context)
 
 
-@login_required()
+@login_required
 @permission_required('tasks.change_task', login_url='no-permission')
 def update_task(request, id):
     task = Task.objects.get(id=id)
@@ -103,7 +103,7 @@ def update_task(request, id):
     context = {"task_form":task_form, "task_detail_form":task_detail_form}
     return render(request, "task_form.html", context)
 
-@login_required()
+@login_required
 @permission_required('tasks.delete_task', login_url='no-permission')
 def delete_task(request, id):
     if request.method == "POST":
@@ -116,7 +116,7 @@ def delete_task(request, id):
         return redirect('manager_dashboard')
     
 
-@login_required()
+@login_required
 @permission_required('tasks.view_task', login_url='no-permission')
 def view_task(request):
     task_count = Project.objects.annotate(num_task = Count('task')).order_by('num_task')
