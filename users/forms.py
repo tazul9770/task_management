@@ -2,7 +2,7 @@ from django import forms
 import re
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User, Permission, Group
-from tasks.forms import StyleFormMixin
+from tasks.forms import StyledFormMixin
 from django.contrib.auth.forms import AuthenticationForm
 
 
@@ -19,7 +19,7 @@ class RegisterForm(UserCreationForm):
             self.fields[fieldname].help_text = None
 
 
-class CustomRegistrationForm(StyleFormMixin, forms.ModelForm):
+class CustomRegistrationForm(StyledFormMixin, forms.ModelForm):
     password1 = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
 
@@ -73,25 +73,27 @@ class CustomRegistrationForm(StyleFormMixin, forms.ModelForm):
             raise forms.ValidationError("Password do not match")
 
         return cleaned_data
-    
-    
-class LoginForm(StyleFormMixin, AuthenticationForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
 
-class AssignRoleForm(forms.Form):
+
+class LoginForm(StyledFormMixin, AuthenticationForm):
+    def __init__(self, *arg, **kwargs):
+        super().__init__(*arg, **kwargs)
+
+
+class AssignRoleForm(StyledFormMixin, forms.Form):
     role = forms.ModelChoiceField(
-        queryset = Group.objects.all(),
-        empty_label="select a role"
+        queryset=Group.objects.all(),
+        empty_label="Select a Role"
     )
-
-class CreateGroupForm(forms.ModelForm):
+    
+class CreateGroupForm(StyledFormMixin, forms.ModelForm):
     permissions = forms.ModelMultipleChoiceField(
         queryset=Permission.objects.all(),
         widget=forms.CheckboxSelectMultiple,
-        required = False,
-        label='Assign permission'
+        required=False,
+        label='Assign Permission'
     )
+    
     class Meta:
         model = Group
         fields = ['name', 'permissions']

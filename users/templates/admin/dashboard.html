@@ -1,12 +1,11 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    {% comment %} <link rel="stylesheet" href="{% static "css/output.css" %}%}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
   </head>
   <body>
     <header class="bg-white shadow-md">
@@ -17,16 +16,16 @@
           >
           <div class="hidden md:flex space-x-4">
             <a
-              href="{% url "admin-dashboard" %}"
+              href="{% url 'admin-dashboard' %}"
               class="text-gray-600 hover:text-gray-800"
               >Dashboard</a
             >
             <a href="#" class="text-gray-600 hover:text-gray-800">Tasks</a>
-            <a href="{% url "group_list" %}" class="text-gray-600 hover:text-gray-800"
+            <a href="{% url 'group-list' %}" class="text-gray-600 hover:text-gray-800"
               >Groups</a
             >
             <a
-              href="{% url 'create_group' %}"
+              href="{% url 'create-group' %}"
               class="text-gray-600 hover:text-gray-800"
               >Create Group</a
             >
@@ -48,12 +47,12 @@
                 class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden"
               >
                 <a
-                  href="{% url "admin-dashboard" %}"
+                  href="{% url 'admin-dashboard' %}"
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >Dashboard</a
                 >
-                <form method="post" action={% url "logout" %}>
-                  {% csrf_token %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
                   <button
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
@@ -103,9 +102,9 @@
     </header>
 
     <main>
-      {% block content %}
+     {% block content %}
         {% include "admin/user_list.html" %}
-      {% endblock content %}
+     {% endblock content %}
     </main>
 
     <script>
