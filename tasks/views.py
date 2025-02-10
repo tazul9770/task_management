@@ -77,7 +77,7 @@ def manager_dashboard(request):
         "counts": counts,
         "role": 'manager'
     }
-    return render(request, "dashboard/manager-dashboard.html", context)
+    return render(request, "dashboard/manager_dashboard.html", context)
 
 
 @user_passes_test(is_employee)

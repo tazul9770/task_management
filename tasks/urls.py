@@ -13,6 +13,6 @@ urlpatterns = [
     #path('update-task/<int:id>/', update_task, name='update-task'),
     path('update-task/<int:id>/', UpdateTask.as_view(), name='update-task'),
     path('delete-task/<int:id>/', delete_task, name='delete-task'),
-    path('dashboard', dashboard, name='dashboard'),
+    path('dashboard/', dashboard, name='dashboard'),
     path('greetings/', HiGreetings.as_view(greetings = "mastani korlam"), name='greetings')
 ]
